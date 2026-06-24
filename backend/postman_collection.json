@@ -455,6 +455,64 @@
               "path": ["analyse"]
             }
           }
+        },
+        {
+          "name": "Evaluate Customer Credit Health - Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"age\": 30,\n  \"monthly_income\": 50000.0,\n  \"requested_amount\": 200000.0,\n  \"employment_type\": \"salaried\",\n  \"foir\": 0.35,\n  \"credit_utilisation_pct\": 45,\n  \"missed_payments_12m\": 1,\n  \"written_off_accounts\": 0,\n  \"credit_age_months\": 24,\n  \"hard_enquiries_6m\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers/1/evaluate",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "customers",
+                "1",
+                "evaluate"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Evaluate Customer Credit Health - Failure (Invalid Input)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"age\": 30,\n  \"monthly_income\": 50000.0,\n  \"requested_amount\": 200000.0,\n  \"employment_type\": \"invalid_type\",\n  \"foir\": 0.35,\n  \"credit_utilisation_pct\": 45,\n  \"missed_payments_12m\": 1,\n  \"written_off_accounts\": 0,\n  \"credit_age_months\": 24,\n  \"hard_enquiries_6m\": 4\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers/1/evaluate",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "customers",
+                "1",
+                "evaluate"
+              ]
+            }
+          }
         }
       ]
     }
