@@ -1,0 +1,497 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--surface-border);
+  padding-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.updatedDate {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.colRight {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Card base */
+.card {
+  background-color: var(--surface-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.2rem;
+}
+
+/* Gauge styling */
+.gaugeContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+}
+
+.svgGauge {
+  transform: rotate(-90deg);
+}
+
+.gaugeProgress {
+  transition: stroke-dashoffset 0.6s ease-out;
+}
+
+.gaugeContent {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.gaugeScore {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.gaugeStatus {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 0.2rem;
+  letter-spacing: 1px;
+}
+
+.potentialScoreBox {
+  background: rgba(99, 102, 241, 0.04);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.potentialHeader {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.potentialVal {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.potentialDesc {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+/* Simulator Panel styling */
+.simulatorCard {
+  border-color: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.05);
+}
+
+.simulatorCard:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+}
+
+.simulatorHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.4rem;
+}
+
+.simulatorIcon {
+  color: var(--primary);
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+.simulatorIntro {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+.simulatorDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  padding: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.simulatorScoreCol, .simulatorGainCol {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.simulatorScoreCol {
+  border-right: 1px solid var(--surface-border);
+}
+
+.simLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.simScore {
+  font-size: 1.8rem;
+  font-weight: 800;
+}
+
+.simGain {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* Unlocked Preview */
+.unlockedOffersPreview {
+  border-top: 1px solid var(--surface-border);
+  padding-top: 1rem;
+}
+
+.offersPreviewTitle {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.offersPreviewList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 180px;
+  overflow-y: auto;
+}
+
+.noOffersUnlocked {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.unlockedOfferItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(16, 185, 129, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 10px;
+  padding: 0.5rem 0.8rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.unlockedOfferLeft {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.unlockIcon {
+  color: var(--color-green);
+}
+
+.unlockedLender {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.unlockedOfferRight {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.unlockedAmount {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-green);
+}
+
+.unlockedRate {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Action Plan & Credit Factors */
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.actionIcon {
+  color: var(--primary);
+}
+
+.actionIntro {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.factorsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.factorCard {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--surface-border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  transition: var(--transition-smooth);
+}
+
+.factorCard:hover {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.simulatedFactor {
+  border-color: rgba(99, 102, 241, 0.3);
+  background: rgba(99, 102, 241, 0.02);
+}
+
+.resolvedCard {
+  border-left: 4px solid var(--color-green);
+  opacity: 0.75;
+}
+
+.factorHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+}
+
+.factorTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.factorName {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.scoreGainText {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-green);
+  background: rgba(16, 185, 129, 0.08);
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid rgba(16, 185, 129, 0.12);
+}
+
+.impactBadge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.badgeRed {
+  background: rgba(244, 63, 94, 0.1);
+  color: var(--color-red);
+  border: 1px solid rgba(244, 63, 94, 0.15);
+}
+
+.badgeAmber {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--color-amber);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.badgeGreen {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--color-green);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.factorValues {
+  display: flex;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.15);
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.8rem;
+}
+
+.valBox {
+  display: flex;
+  flex-direction: column;
+}
+
+.valLabel {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 0.1rem;
+}
+
+.valContent {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.actionDescription {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.cardActions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--surface-border);
+  padding-top: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxInput {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.checkboxText {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+}
+
+.checkboxInput:checked + .checkboxText {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.resolveButton {
+  background: transparent;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: var(--text-primary);
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.resolveButton:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+.resolvedBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--color-green);
+  font-weight: 600;
+  border-top: 1px solid var(--surface-border);
+  padding-top: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .colLeft {
+    order: 2;
+  }
+  
+  .colRight {
+    order: 1;
+  }
+}

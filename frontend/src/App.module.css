@@ -1,0 +1,170 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Toast Notifications */
+.toast {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+}
+
+.toastSuccess {
+  background: rgba(16, 185, 129, 0.95);
+  border-color: var(--color-green);
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.25);
+}
+
+.toastError {
+  background: rgba(244, 63, 94, 0.95);
+  border-color: var(--color-red);
+  box-shadow: 0 4px 20px rgba(244, 63, 94, 0.25);
+}
+
+/* Spinner & Loading */
+.loadingWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 4rem 2rem;
+  gap: 1.5rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.05);
+  border-left-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingText {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* Skeletons */
+.skeletonHeader {
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  margin-bottom: 2rem;
+  border: 1px solid var(--surface-border);
+}
+
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.skeletonCardLarge, .skeletonCardSmall {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--surface-border);
+  border-radius: 20px;
+}
+
+.skeletonCardLarge {
+  height: 380px;
+}
+
+.skeletonCardSmall {
+  height: 500px;
+}
+
+/* Error State */
+.errorWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 480px;
+  margin: auto;
+  gap: 1rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.errorIcon {
+  color: var(--color-red);
+  background: rgba(244, 63, 94, 0.06);
+  padding: 0.8rem;
+  border-radius: 50%;
+  border: 1px solid rgba(244, 63, 94, 0.12);
+  width: 72px;
+  height: 72px;
+}
+
+.errorTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.errorDesc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.retryBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--primary);
+  border: none;
+  color: var(--text-primary);
+  padding: 0.65rem 1.3rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.retryBtn:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+@media (max-width: 1024px) {
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+  }
+}

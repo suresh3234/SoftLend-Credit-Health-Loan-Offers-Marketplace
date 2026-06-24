@@ -1,0 +1,462 @@
+{
+  "info": {
+    "_postman_id": "79b41f03-234b-459f-8561-67ed6a798247",
+    "name": "Softlend API Collection",
+    "description": "API collection covering all endpoints of the Softlend Credit Profile & Loan Offer Management API. Contains at least one success and one failure case for each.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customer Management",
+      "item": [
+        {
+          "name": "Create Customer - Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Vijay Verma\",\n  \"mobile\": \"9876543220\",\n  \"pan\": \"ABCDE5678G\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers"]
+            }
+          }
+        },
+        {
+          "name": "Create Customer - Failure (Duplicate Mobile)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ravi Kumar\",\n  \"mobile\": \"9876543210\",\n  \"pan\": \"ABCDE1234F\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers"]
+            }
+          }
+        },
+        {
+          "name": "Create Customer - Failure (Invalid PAN)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Vijay Verma\",\n  \"mobile\": \"9876543220\",\n  \"pan\": \"INVALIDPAN\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers"]
+            }
+          }
+        },
+        {
+          "name": "Update Credit Score - Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cibil_score\": 680\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers/1/credit-score",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "credit-score"]
+            }
+          }
+        },
+        {
+          "name": "Update Credit Score - Failure (Out of Range)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cibil_score\": 250\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers/1/credit-score",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "credit-score"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Credit Gaps & Profile",
+      "item": [
+        {
+          "name": "Add Credit Gap - Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"factor\": \"Recent hard enquiries\",\n  \"current_value\": \"5 enquiries\",\n  \"ideal_value\": \"below 3\",\n  \"impact\": \"medium\",\n  \"estimated_score_gain\": 10,\n  \"action_description\": \"Avoid applying for multiple credits within a short span.\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers/1/credit-gaps",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "credit-gaps"]
+            }
+          }
+        },
+        {
+          "name": "Add Credit Gap - Failure (Invalid Impact)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"factor\": \"Recent hard enquiries\",\n  \"current_value\": \"5\",\n  \"ideal_value\": \"3\",\n  \"impact\": \"critical\",\n  \"estimated_score_gain\": 10,\n  \"action_description\": \"Test description\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers/1/credit-gaps",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "credit-gaps"]
+            }
+          }
+        },
+        {
+          "name": "Get Credit Profile - Success",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/customers/1/credit-profile",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "credit-profile"]
+            }
+          }
+        },
+        {
+          "name": "Get Credit Profile - Failure (Not Found)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/customers/999/credit-profile",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "999", "credit-profile"]
+            }
+          }
+        },
+        {
+          "name": "Resolve Credit Gap - Success",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "http://localhost:8000/credit-gaps/1/resolve",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["credit-gaps", "1", "resolve"]
+            }
+          }
+        },
+        {
+          "name": "Resolve Credit Gap - Failure (Not Found)",
+          "request": {
+            "method": "PATCH",
+            "url": {
+              "raw": "http://localhost:8000/credit-gaps/999/resolve",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["credit-gaps", "999", "resolve"]
+            }
+          }
+        },
+        {
+          "name": "Get Improvement Summary - Success (Bonus)",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/customers/1/improvement-summary",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "improvement-summary"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Loan Offers & EMI",
+      "item": [
+        {
+          "name": "Create Offer - Success",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"lender\": \"SBI Card\",\n  \"amount\": 150000,\n  \"interest_rate\": 14.5,\n  \"tenure_months\": 18,\n  \"min_score_required\": 640\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/customers/1/offers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "offers"]
+            }
+          }
+        },
+        {
+          "name": "List Offers - Success",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/customers/1/offers",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "offers"]
+            }
+          }
+        },
+        {
+          "name": "List Offers - Filtered by Locked",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/customers/1/offers?locked=true",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["customers", "1", "offers"],
+              "query": [
+                {
+                  "key": "locked",
+                  "value": "true"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Transition Offer Status - Failure (Locked Offer)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/offers/1/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["offers", "1", "status"]
+            }
+          }
+        },
+        {
+          "name": "Transition Offer Status - Success (Unlocked Offer)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"active\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/offers/2/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["offers", "2", "status"]
+            }
+          }
+        },
+        {
+          "name": "Transition Offer Status - Failure (Invalid Transition)",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"status\": \"disbursed\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/offers/1/status",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["offers", "1", "status"]
+            }
+          }
+        },
+        {
+          "name": "Calculate EMI - Success",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "http://localhost:8000/offers/1/emi",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["offers", "1", "emi"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rule Engine Integration",
+      "item": [
+        {
+          "name": "Analyse - Gap Analysis Success (Bonus)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"gap_analysis\",\n  \"customer_id\": \"C001\",\n  \"credit_utilisation_pct\": 87,\n  \"missed_payments_12m\": 2,\n  \"written_off_accounts\": 0,\n  \"credit_age_months\": 14,\n  \"hard_enquiries_6m\": 2\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/analyse",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["analyse"]
+            }
+          }
+        },
+        {
+          "name": "Analyse - Eligibility Success (Bonus)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"eligibility\",\n  \"customer_id\": \"C001\",\n  \"age\": 29,\n  \"cibil_score\": 620,\n  \"monthly_income\": 60000,\n  \"existing_emis\": 15000,\n  \"foir\": 0.25,\n  \"employment_type\": \"salaried\",\n  \"written_off_accounts\": 0,\n  \"requested_amount\": 400000\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/analyse",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["analyse"]
+            }
+          }
+        },
+        {
+          "name": "Analyse - Failure (Missing Fields)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mode\": \"gap_analysis\",\n  \"customer_id\": \"C001\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8000/analyse",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "8000",
+              "path": ["analyse"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

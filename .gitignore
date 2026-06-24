@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database
+backend/softlend.db
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Node modules and build files
+node_modules/
+dist/
+build/
+.eslintcache
+
+# Local IDE configuration files
+.vscode/
+.idea/
+.DS_Store
